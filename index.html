@@ -1207,7 +1207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const fieldsSessao1 = ['unidadeRH', 'cargo', 'codigoVaga', 'analista', 'whatsapp', 'divulgaLogo', 'empresa', 'producao', 'presencial', 'local', 'evento', 'recorrente', 'mediaMensal', 'tipoVaga', 'vagas', 'beneficios', 'requisitos', 'turnos', 'joinville', 'outraCidade', 'notas', 'impulsionar'];
             fieldsSessao1.forEach(id => {
                 const el = document.getElementById(id);
-                if (el && el.offsetParent !== null && el.value) {
+                if (el && el.value) {
                     writeField(getLabelFor(id), el.value);
                 }
             });
@@ -1507,9 +1507,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 elementos.notas.value = parsedData.notas || '';
                 Swal.fire('Sucesso!', 'Os detalhes da vaga foram carregados e analisados pela IA!', 'success');
             } else {
-                 Swal.close();
-                elementos.offlineDescriptionContainer.classList.remove('hidden');
-                elementos.descricaoVaga.value = vacancyText;
+                Swal.fire('Análise Falhou', 'Não foi possível extrair os dados do texto. Por favor, preencha manualmente.', 'warning');
             }
             
             if (descriptionDiv.textContent.toLowerCase().includes('temporári')) {
