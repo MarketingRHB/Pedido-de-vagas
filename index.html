@@ -222,7 +222,7 @@
 
         <div class="mb-4">
           <label class="block text-gray-700 font-medium mb-2" for="presencial">
-            Comparecimento presencial? <span class="text-red-500">*</span>
+            Comparecimento presencial? O padrão é RHBrasil <span class="text-red-500">*</span>
           </label>
           <select id="presencial" name="presencial" required
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -232,62 +232,10 @@
           </select>
         </div>
 
-        <div id="outroLugar" class="hidden mb-4">
-          <label class="block text-gray-700 font-medium mb-2" for="local">
-            Local para comparecer (Google Maps link) <span class="text-red-500">*</span>
-          </label>
-          <input id="local" name="local" type="url" placeholder="https://maps.app.goo.gl/xyz123"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <div id="eventoContainer" class="hidden mb-4">
-          <label class="block text-gray-700 font-medium mb-2" for="evento">
-            É evento/feirão/mutirão?
-          </label>
-          <select id="evento" name="evento"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="Não">Não</option>
-            <option value="Feirão">Feirão</option>
-            <option value="Mutirão">Mutirão</option>
-          </select>
-        </div>
-        
-        <div class="mb-4">
-          <label class="block text-gray-700 font-medium mb-2" for="recorrente">
-            É uma vaga recorrente? <span class="text-red-500">*</span>
-          </label>
-          <select id="recorrente" name="recorrente" required
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="">Selecione</option>
-            <option value="Sim">Sim</option>
-            <option value="Não">Não</option>
-          </select>
-        </div>
-
-        <div id="mediaMensalContainer" class="hidden mb-4">
-          <label class="block text-gray-700 font-medium mb-2" for="mediaMensal">
-            Qual a média mensal? <span class="text-red-500">*</span>
-          </label>
-          <input id="mediaMensal" name="mediaMensal" type="number" 
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 font-medium mb-2" for="tipoVaga">
-            Tipo de vaga <span class="text-red-500">*</span>
-          </label>
-          <select id="tipoVaga" name="tipoVaga" required
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="">Selecione</option>
-            <option value="Efetivo">Efetivo</option>
-            <option value="Temporário">Temporário</option>
-          </select>
-        </div>
-
         <div class="mb-4">
           <label class="block text-gray-700 font-medium mb-2" for="temDataDefinida">
-            Tem data definida? <span class="text-red-500">*</span>
-            <span class="text-blue-500 cursor-help ml-1" title="Se não tiver data definida, o padrão será de Segunda à Sexta">
+            Tem data de processo seletivo? O padrão é Segunda à Sexta <span class="text-red-500">*</span>
+            <span class="text-blue-500 cursor-help ml-1" title="Se não tiver data de processo seletivo, o padrão será de Segunda à Sexta.">
               <i class="fas fa-info-circle"></i>
             </span>
           </label>
@@ -347,7 +295,7 @@
 
         <div class="mb-4">
           <label class="block text-gray-700 font-medium mb-2" for="temHorarioDefinido">
-            Tem horário definido? <span class="text-red-500">*</span>
+            Tem horário de processo seletivo? O padrão é 7:30 às 17:00 <span class="text-red-500">*</span>
             <span class="text-blue-500 cursor-help ml-1" title="Se não tiver horário definido, o padrão será das 7:30 às 17:00">
               <i class="fas fa-info-circle"></i>
             </span>
@@ -406,6 +354,47 @@
           </div>
         </div>
 
+        <div id="outroLugar" class="hidden mb-4">
+          <label class="block text-gray-700 font-medium mb-2" for="local">
+            Local para comparecer (Google Maps link) <span class="text-red-500">*</span>
+          </label>
+          <input id="local" name="local" type="url" placeholder="https://maps.app.goo.gl/xyz123"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div id="eventoContainer" class="hidden mb-4">
+          <label class="block text-gray-700 font-medium mb-2" for="evento">
+            É evento/feirão/mutirão?
+          </label>
+          <select id="evento" name="evento"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="Não">Não</option>
+            <option value="Feirão">Feirão</option>
+            <option value="Mutirão">Mutirão</option>
+            <option value="Vanzinha">Vanzinha</option>
+          </select>
+        </div>
+        
+        <div class="mb-4">
+          <label class="block text-gray-700 font-medium mb-2" for="recorrente">
+            É uma vaga recorrente? <span class="text-red-500">*</span>
+          </label>
+          <select id="recorrente" name="recorrente" required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">Selecione</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
+        </div>
+
+        <div id="mediaMensalContainer" class="hidden mb-4">
+          <label class="block text-gray-700 font-medium mb-2" for="mediaMensal">
+            Qual a média mensal de vagas fechas? <span class="text-red-500">*</span>
+          </label>
+          <input id="mediaMensal" name="mediaMensal" type="number" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        
         <div class="mb-4">
           <label class="block text-gray-700 font-medium mb-2" for="vagas">
             Quantas vagas <span class="text-red-500">*</span>
@@ -673,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cargo: document.getElementById("cargo"),
         codigoVaga: document.getElementById("codigoVaga"),
         searchResults: document.getElementById("search-results"),
-        onlineSearchSection: document.getElementById("online-search-section"),
+        unidadeContainer: document.getElementById("unidade-container"),
         recorrente: document.getElementById("recorrente"),
         mediaMensalContainer: document.getElementById("mediaMensalContainer"),
         mediaMensal: document.getElementById("mediaMensal"),
@@ -1129,7 +1118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         try {
-            const { PDFDocument, StandardFonts, rgb } = PDFLib;
+            const { PDFDocument, StandardFonts, rgb } = window.PDFLib;
             const pdfDoc = await PDFDocument.create();
             const helvetica = await pdfDoc.embedFont(StandardFonts.Helvetica);
             const helveticaBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
@@ -1170,37 +1159,37 @@ document.addEventListener('DOMContentLoaded', () => {
             const writeField = (label, value) => {
                 if (!value || value.trim() === '') return; 
                 
-                const labelText = `${label}:`;
-                const labelWidth = helveticaBold.widthOfTextAtSize(labelText, fontSize);
-                const valueX = margin + 140; // Alinhamento fixo para os valores
-                const maxWidth = width - valueX - margin;
-
                 checkY(20);
                 y -= 15;
-
-                page.drawText(labelText, {
+                page.drawText(`${label}:`, {
                     x: margin,
                     y: y,
                     font: helveticaBold,
                     size: fontSize,
+                    color: rgb(0.2, 0.2, 0.2), 
                 });
+
+                checkY(20); 
+                y -= 15;
+
+                const valueX = margin + 15;
+                const maxWidth = width - valueX - margin;
                 
-                const sanitized = String(value).replace(/\n+/g, ' ').trim();
-                const words = sanitized.split(' ');
+                const words = String(value).split(' ');
                 let line = '';
-                for(const word of words) {
+                for (const word of words) {
                     const testLine = line + word + ' ';
                     const textWidth = helvetica.widthOfTextAtSize(testLine, fontSize);
-                    if(textWidth > maxWidth && line.length > 0) {
-                        page.drawText(line, { x: valueX, y: y, font: helvetica, size: fontSize });
+                    if (textWidth > maxWidth && line.length > 0) {
+                        page.drawText(line, { x: valueX, y: y, font: helvetica, size: fontSize, color: rgb(0.1, 0.1, 0.1) });
                         checkY(15);
-                        y -= 12;
+                        y -= 12; 
                         line = word + ' ';
                     } else {
                         line = testLine;
                     }
                 }
-                page.drawText(line.trim(), { x: valueX, y: y, font: helvetica, size: fontSize });
+                page.drawText(line.trim(), { x: valueX, y: y, font: helvetica, size: fontSize, color: rgb(0.1, 0.1, 0.1) });
             };
             
             const getLabelFor = (elementId) => {
@@ -1218,7 +1207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const fieldsSessao1 = ['unidadeRH', 'cargo', 'codigoVaga', 'analista', 'whatsapp', 'divulgaLogo', 'empresa', 'producao', 'presencial', 'local', 'evento', 'recorrente', 'mediaMensal', 'tipoVaga', 'vagas', 'beneficios', 'requisitos', 'turnos', 'joinville', 'outraCidade', 'notas', 'impulsionar'];
             fieldsSessao1.forEach(id => {
                 const el = document.getElementById(id);
-                if (el && el.value) {
+                if (el && el.offsetParent !== null && el.value) {
                     writeField(getLabelFor(id), el.value);
                 }
             });
@@ -1305,17 +1294,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open('https://webmail.rhbrasil.com.br/', '_blank');
         
         } catch(error) {
-            console.error("Erro ao gerar PDF:", error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Erro!',
-                text: 'Houve um problema ao gerar o PDF. Verifique o console para mais detalhes.'
-            });
+            Swal.close();
         }
     }
 
     // --- Lógica de Busca de Vagas ---
     let allVacanciesData = [];
+    let isOnlineMode = true;
 
     async function initVacancySearch() {
         try {
@@ -1349,13 +1334,15 @@ document.addEventListener('DOMContentLoaded', () => {
             elementos.unidadeRH.dispatchEvent(new Event('change'));
 
         } catch (error) {
-            elementos.unidadeRH.parentElement.classList.add('hidden');
+            isOnlineMode = false;
+            elementos.unidadeContainer.classList.add('hidden');
             elementos.unidadeRH.required = false;
             elementos.offlineDescriptionContainer.classList.remove('hidden');
         }
     }
 
     function performSearch() {
+        if (!isOnlineMode) return;
         const query = elementos.cargo.value.toLowerCase().trim();
         const selectedUnidade = elementos.unidadeRH.value;
         
@@ -1401,26 +1388,8 @@ document.addEventListener('DOMContentLoaded', () => {
         elementos.searchResults.classList.remove('hidden');
     }
     
-    function parseLocally(text) {
-        const sections = {
-            requisitos: /(?:requisitos?|pr[eé]-?requisitos?)\s*:?\s*([\s\S]*?)(?=(benef[ií]cios?|turno|hor[áa]rio|notas|informa\u00e7\u00f5es|$))/i,
-            beneficios: /benef[ií]cios?\s*:?\s*([\s\S]*?)(?=(requisitos?|pr[eé]-?requisitos?|turno|hor[áa]rio|notas|informa\u00e7\u00f5es|$))/i,
-            turno: /(turno|hor[áa]rio)\s*:?\s*([\s\S]*?)(?=(requisitos?|pr[eé]-?requisitos?|benef[ií]cios?|notas|informa\u00e7\u00f5es|$))/i,
-            notas: /(notas|informa\u00e7\u00f5es adicionais?)\s*:?\s*([\s\S]*?)(?=(requisitos?|pr[eé]-?requisitos?|benef[ií]cios?|turno|hor[áa]rio|$))/i
-        };
-        const result = { requisitos: '', beneficios: '', turno: '', notas: '' };
-        for (const [key, regex] of Object.entries(sections)) {
-            const match = text.match(regex);
-            if (match) {
-                result[key] = (match[1] || match[2] || '').trim();
-            }
-        }
-        return result;
-    }
-
     async function parseWithGemini(text) {
         const apiKey = "";
-
         
         let timerInterval;
         Swal.fire({
@@ -1434,12 +1403,12 @@ document.addEventListener('DOMContentLoaded', () => {
             timerProgressBar: false,
             allowOutsideClick: false,
             didOpen: () => {
-                const progressBar = document.getElementById('gemini-progress-bar');
+                const progressBar = Swal.getHtmlContainer()?.querySelector('#gemini-progress-bar');
                 let progress = 0;
                 timerInterval = setInterval(() => {
                     progress += 5; 
                     if(progress < 95) {
-                         progressBar.style.width = progress + '%';
+                         if(progressBar) progressBar.style.width = progress + '%';
                     }
                 }, 100);
             },
@@ -1448,42 +1417,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
         const prompt = `Analise o seguinte texto de descrição de uma vaga de emprego. Extraia as informações de "requisitos", "benefícios", "turno" e "notas adicionais". Formate a saída como um objeto JSON com as chaves "requisitos", "beneficios", "turno" e "notas". Se uma seção não for encontrada, retorne uma string vazia para a chave correspondente. Texto da vaga: "${text}"`;
+        
+        const payload = {
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+                responseMimeType: "application/json",
+                responseSchema: {
+                    type: "OBJECT",
+                    properties: {
+                        "requisitos": { "type": "STRING" },
+                        "beneficios": { "type": "STRING" },
+                        "turno": { "type": "STRING" },
+                        "notas": { "type": "STRING" }
+                    },
+                    required: ["requisitos", "beneficios", "turno", "notas"]
+                }
+            }
+        };
 
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{ "text": prompt }]
-                    }]
-                })
+                body: JSON.stringify(payload)
             });
 
-            if (!response.ok) {
-                 throw new Error();
-            }
-
+            if (!response.ok) throw new Error();
             const result = await response.json();
+            
             clearInterval(timerInterval);
-            const progressBar = document.getElementById('gemini-progress-bar');
+            const progressBar = Swal.getHtmlContainer()?.querySelector('#gemini-progress-bar');
             if (progressBar) progressBar.style.width = '100%';
+
             const candidate = result.candidates?.[0];
             const content = candidate?.content?.parts?.[0]?.text;
-            if (!content) return null;
-            try {
-                return JSON.parse(content);
-            } catch (_) {
-
-            }
+            
+            return content ? JSON.parse(content) : null;
 
         } catch (error) {
             Swal.close();
-            return parseLocally(text);
+            return null;
         }
     }
 
@@ -1518,18 +1494,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (/os detalhes dessa vaga ainda não foram divulgados/i.test(vacancyText)) {
                 elementos.offlineDescriptionContainer.classList.remove('hidden');
                 elementos.descricaoVaga.value = vacancyText;
+                Swal.close();
                 return;
             }
 
             const parsedData = await parseWithGemini(vacancyText);
 
             if (parsedData) {
-                if (parsedData.requisitos) elementos.requisitos.value = parsedData.requisitos;
-                if (parsedData.beneficios) elementos.beneficios.value = parsedData.beneficios;
-                if (parsedData.turno) elementos.turnos.value = parsedData.turno;
-                if (parsedData.notas) elementos.notas.value = parsedData.notas;
+                elementos.requisitos.value = parsedData.requisitos || '';
+                elementos.beneficios.value = parsedData.beneficios || '';
+                elementos.turnos.value = parsedData.turno || '';
+                elementos.notas.value = parsedData.notas || '';
                 Swal.fire('Sucesso!', 'Os detalhes da vaga foram carregados e analisados pela IA!', 'success');
             } else {
+                 Swal.close();
                 elementos.offlineDescriptionContainer.classList.remove('hidden');
                 elementos.descricaoVaga.value = vacancyText;
             }
@@ -1556,11 +1534,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const parsedData = await parseWithGemini(textToParse);
 
         if (parsedData) {
-            if (parsedData.requisitos) elementos.requisitos.value = parsedData.requisitos;
-            if (parsedData.beneficios) elementos.beneficios.value = parsedData.beneficios;
-            if (parsedData.turno) elementos.turnos.value = parsedData.turno;
-            if (parsedData.notas) elementos.notas.value = parsedData.notas;
+            elementos.requisitos.value = parsedData.requisitos || '';
+            elementos.beneficios.value = parsedData.beneficios || '';
+            elementos.turnos.value = parsedData.turno || '';
+            elementos.notas.value = parsedData.notas || '';
             Swal.fire('Sucesso!', 'O texto foi analisado e os campos foram preenchidos!', 'success');
+        } else {
+            Swal.fire('Análise Falhou', 'Não foi possível extrair os dados do texto. Por favor, preencha manualmente.', 'warning');
         }
     });
 
