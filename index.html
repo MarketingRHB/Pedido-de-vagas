@@ -1401,12 +1401,26 @@ document.addEventListener('DOMContentLoaded', () => {
         elementos.searchResults.classList.remove('hidden');
     }
     
+    function parseLocally(text) {
+        const sections = {
+            requisitos: /(?:requisitos?|pr[eé]-?requisitos?)\s*:?\s*([\s\S]*?)(?=(benef[ií]cios?|turno|hor[áa]rio|notas|informa\u00e7\u00f5es|$))/i,
+            beneficios: /benef[ií]cios?\s*:?\s*([\s\S]*?)(?=(requisitos?|pr[eé]-?requisitos?|turno|hor[áa]rio|notas|informa\u00e7\u00f5es|$))/i,
+            turno: /(turno|hor[áa]rio)\s*:?\s*([\s\S]*?)(?=(requisitos?|pr[eé]-?requisitos?|benef[ií]cios?|notas|informa\u00e7\u00f5es|$))/i,
+            notas: /(notas|informa\u00e7\u00f5es adicionais?)\s*:?\s*([\s\S]*?)(?=(requisitos?|pr[eé]-?requisitos?|benef[ií]cios?|turno|hor[áa]rio|$))/i
+        };
+        const result = { requisitos: '', beneficios: '', turno: '', notas: '' };
+        for (const [key, regex] of Object.entries(sections)) {
+            const match = text.match(regex);
+            if (match) {
+                result[key] = (match[1] || match[2] || '').trim();
+            }
+        }
+        return result;
+    }
+
     async function parseWithGemini(text) {
         const apiKey = "";
-        if (!apiKey) {
-            console.warn('Chave da API Gemini ausente.');
-            return null;
-        }
+
         
         let timerInterval;
         Swal.fire({
@@ -1464,12 +1478,12 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 return JSON.parse(content);
             } catch (_) {
-                return null;
+
             }
 
         } catch (error) {
             Swal.close();
-            return null;
+            return parseLocally(text);
         }
     }
 
