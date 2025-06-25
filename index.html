@@ -1185,7 +1185,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     size: fontSize,
                 });
                 
-                const words = String(value).split(' ');
+                const sanitized = String(value).replace(/\n+/g, ' ').trim();
+                const words = sanitized.split(' ');
                 let line = '';
                 for(const word of words) {
                     const testLine = line + word + ' ';
@@ -1419,9 +1420,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function parseWithGemini(text) {
         const apiKey = "";
-        if (!apiKey) {
-            return parseLocally(text);
-        }
+
         
         let timerInterval;
         Swal.fire({
@@ -1479,7 +1478,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 return JSON.parse(content);
             } catch (_) {
-                return parseLocally(content);
+
             }
 
         } catch (error) {
@@ -1516,14 +1515,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const descriptionDiv = doc.querySelector('.description.expand') || doc.body;
             const vacancyText = descriptionDiv.innerText;
 
+            if (/os detalhes dessa vaga ainda não foram divulgados/i.test(vacancyText)) {
+                elementos.offlineDescriptionContainer.classList.remove('hidden');
+                elementos.descricaoVaga.value = vacancyText;
+                return;
+            }
+
             const parsedData = await parseWithGemini(vacancyText);
 
             if (parsedData) {
-                elementos.requisitos.value = parsedData.requisitos || '';
-                elementos.beneficios.value = parsedData.beneficios || '';
-                elementos.turnos.value = parsedData.turno || '';
-                elementos.notas.value = parsedData.notas || '';
+                if (parsedData.requisitos) elementos.requisitos.value = parsedData.requisitos;
+                if (parsedData.beneficios) elementos.beneficios.value = parsedData.beneficios;
+                if (parsedData.turno) elementos.turnos.value = parsedData.turno;
+                if (parsedData.notas) elementos.notas.value = parsedData.notas;
                 Swal.fire('Sucesso!', 'Os detalhes da vaga foram carregados e analisados pela IA!', 'success');
+            } else {
+                elementos.offlineDescriptionContainer.classList.remove('hidden');
+                elementos.descricaoVaga.value = vacancyText;
             }
             
             if (descriptionDiv.textContent.toLowerCase().includes('temporári')) {
@@ -1548,10 +1556,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const parsedData = await parseWithGemini(textToParse);
 
         if (parsedData) {
-            elementos.requisitos.value = parsedData.requisitos || '';
-            elementos.beneficios.value = parsedData.beneficios || '';
-            elementos.turnos.value = parsedData.turno || '';
-            elementos.notas.value = parsedData.notas || '';
+            if (parsedData.requisitos) elementos.requisitos.value = parsedData.requisitos;
+            if (parsedData.beneficios) elementos.beneficios.value = parsedData.beneficios;
+            if (parsedData.turno) elementos.turnos.value = parsedData.turno;
+            if (parsedData.notas) elementos.notas.value = parsedData.notas;
             Swal.fire('Sucesso!', 'O texto foi analisado e os campos foram preenchidos!', 'success');
         }
     });
