@@ -643,8 +643,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-    let webmailWindow;
-
     const elementos = {
         form: document.getElementById("vagaForm"),
         // Sessão 1
@@ -1293,11 +1291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showConfirmButton: false
             });
 
-            if (!webmailWindow || webmailWindow.closed) {
-                webmailWindow = window.open('https://webmail.rhbrasil.com.br/', '_blank');
-            } else {
-                webmailWindow.focus();
-            }
+            window.open('https://webmail.rhbrasil.com.br/', '_blank');
         
         } catch(error) {
             Swal.close();
