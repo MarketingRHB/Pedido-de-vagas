@@ -35,6 +35,7 @@
     }
     .invalid {
       border-color: #ef4444;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.4);
     }
     /* Estilos para a busca de vagas */
     #search-results {
@@ -374,27 +375,7 @@
             <option value="Vanzinha">Vanzinha</option>
           </select>
         </div>
-        
-        <div class="mb-4">
-          <label class="block text-gray-700 font-medium mb-2" for="recorrente">
-            É uma vaga recorrente? <span class="text-red-500">*</span>
-          </label>
-          <select id="recorrente" name="recorrente" required
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="">Selecione</option>
-            <option value="Sim">Sim</option>
-            <option value="Não">Não</option>
-          </select>
-        </div>
 
-        <div id="mediaMensalContainer" class="hidden mb-4">
-          <label class="block text-gray-700 font-medium mb-2" for="mediaMensal">
-            Qual a média mensal de vagas fechas? <span class="text-red-500">*</span>
-          </label>
-          <input id="mediaMensal" name="mediaMensal" type="number" 
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-        
         <div class="mb-4">
           <label class="block text-gray-700 font-medium mb-2" for="vagas">
             Quantas vagas <span class="text-red-500">*</span>
@@ -546,6 +527,26 @@
             Qual orçamento sugerido por dia? <span class="text-red-500">*</span>
           </label>
           <input id="orcamento" name="orcamento" type="text" value="R$50,00" required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 font-medium mb-2" for="recorrente">
+            É uma vaga recorrente? <span class="text-red-500">*</span>
+          </label>
+          <select id="recorrente" name="recorrente" required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">Selecione</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
+        </div>
+
+        <div id="mediaMensalContainer" class="hidden mb-4">
+          <label class="block text-gray-700 font-medium mb-2" for="mediaMensal">
+            Qual a média mensal de vagas fechas? <span class="text-red-500">*</span>
+          </label>
+          <input id="mediaMensal" name="mediaMensal" type="number"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
@@ -1211,7 +1212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             writeSectionHeader("Sessão 1 - Dados da Vaga");
             
-            const fieldsSessao1 = ['unidadeRH', 'cargo', 'codigoVaga', 'analista', 'whatsapp', 'divulgaLogo', 'empresa', 'producao', 'presencial', 'local', 'evento', 'recorrente', 'mediaMensal', 'tipoVaga', 'vagas', 'beneficios', 'requisitos', 'turnos', 'joinville', 'outraCidade', 'notas', 'impulsionar'];
+            const fieldsSessao1 = ['unidadeRH', 'cargo', 'codigoVaga', 'analista', 'whatsapp', 'divulgaLogo', 'empresa', 'producao', 'presencial', 'local', 'evento', 'tipoVaga', 'vagas', 'beneficios', 'requisitos', 'turnos', 'joinville', 'outraCidade', 'notas', 'impulsionar'];
             fieldsSessao1.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && el.value) {
@@ -1261,7 +1262,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (elementos.impulsionar.value === 'Sim') {
                 writeSectionHeader("Sessão 2 - Impulsionamento");
-                const fieldsSessao2 = ['genero', 'idadeMinima', 'idadeMaxima', 'dias', 'orcamento'];
+                const fieldsSessao2 = ['genero', 'idadeMinima', 'idadeMaxima', 'dias', 'orcamento', 'recorrente', 'mediaMensal'];
                 fieldsSessao2.forEach(id => {
                     const el = document.getElementById(id);
                     if (el && el.value) {
