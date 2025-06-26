@@ -1157,8 +1157,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             const writeField = (label, value) => {
-                if (!value || value.trim() === '') return; 
-                
+                if (!value || value.trim() === '') return;
+
                 checkY(20);
                 y -= 15;
                 page.drawText(`${label}:`, {
@@ -1166,30 +1166,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     y: y,
                     font: helveticaBold,
                     size: fontSize,
-                    color: rgb(0.2, 0.2, 0.2), 
+                    color: rgb(0.2, 0.2, 0.2),
                 });
 
-                checkY(20); 
+                checkY(20);
                 y -= 15;
 
                 const valueX = margin + 15;
                 const maxWidth = width - valueX - margin;
-                
-                const words = String(value).split(' ');
-                let line = '';
-                for (const word of words) {
-                    const testLine = line + word + ' ';
-                    const textWidth = helvetica.widthOfTextAtSize(testLine, fontSize);
-                    if (textWidth > maxWidth && line.length > 0) {
-                        page.drawText(line, { x: valueX, y: y, font: helvetica, size: fontSize, color: rgb(0.1, 0.1, 0.1) });
-                        checkY(15);
-                        y -= 12; 
-                        line = word + ' ';
-                    } else {
-                        line = testLine;
+
+                const lines = String(value).split(/\r?\n/);
+                lines.forEach((text, idx) => {
+                    const words = text.split(' ');
+                    let line = '';
+                    for (const word of words) {
+                        const testLine = line + word + ' ';
+                        const textWidth = helvetica.widthOfTextAtSize(testLine, fontSize);
+                        if (textWidth > maxWidth && line.length > 0) {
+                            page.drawText(line.trim(), { x: valueX, y: y, font: helvetica, size: fontSize, color: rgb(0.1, 0.1, 0.1) });
+                            checkY(15);
+                            y -= 12;
+                            line = word + ' ';
+                        } else {
+                            line = testLine;
+                        }
                     }
-                }
-                page.drawText(line.trim(), { x: valueX, y: y, font: helvetica, size: fontSize, color: rgb(0.1, 0.1, 0.1) });
+                    page.drawText(line.trim(), { x: valueX, y: y, font: helvetica, size: fontSize, color: rgb(0.1, 0.1, 0.1) });
+                    if (idx < lines.length - 1) {
+                        checkY(15);
+                        y -= 12;
+                    }
+                });
             };
             
             const getLabelFor = (elementId) => {
